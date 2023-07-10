@@ -1,0 +1,6 @@
+{
+  "name": "uat-role-to-uat-group",
+  "roles": [
+    "stp-UAT"
+  ]
+}

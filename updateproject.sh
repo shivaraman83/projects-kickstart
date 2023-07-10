@@ -19,9 +19,11 @@ token=cmVmdGtuOjAxOjE3MjA1NDczMjc6T2EwYnJIdjhhNVFMNTFvdEJlaHBpUWJxQkdp
 SOURCE_JPD_URL="${1:?please enter JPD URL. ex - https://proservices.jfrog.io}"
 JPD_AUTH_TOKEN="${2:?please provide the identity token}"
 PROJECT_KEY="${3:?please provide the project key. ex - stp}"
-## Delete the below  line later
+## Delete the below  lines later or move to another script
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE -H "Content-Type: application/json" $SOURCE_JPD_URL/artifactory/api/repositories/stp-sivas-nuget-local-apac
-##curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$PROJECT_KEY/environments/stp-UAT
+curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE  -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$PROJECT_KEY/groups/uat-group
+curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE  -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/stp/roles/stp-UAT
+curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$PROJECT_KEY/environments/stp-UAT
 
 
 
@@ -34,6 +36,10 @@ curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X PUT  -H "Content-Type: applica
 
 ##Create a new project level role
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST  -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/stp/roles -T project-role-config.json
+
+##Associate the role to the group
+curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X PUT  -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$PROJECT_KEY/groups/uat-group -T role-to-group.json
+
 
 ## sample usage - ./createproject.sh https://proservices.jfrog.io cmVmdGtuOjAxOjE3MjA1NDM3Njk6a0ZrRjFrYW5VbHQ1NXZjaDFpNmhzYWJQVE9Y sivas-test-project-admin
 
