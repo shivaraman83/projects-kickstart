@@ -41,6 +41,6 @@ curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST  -H "Content-Type: applic
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X PUT  -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$PROJECT_KEY/groups/uat-group -T role-to-group.json
 
 
-## sample usage - ./createproject.sh https://proservices.jfrog.io cmVmdGtuOjAxOjE3MjA1NDM3Njk6a0ZrRjFrYW5VbHQ1NXZjaDFpNmhzYWJQVE9Y sivas-test-project-admin
+## sample usage - ./updateproject.sh https://proservices.jfrog.io <project-admin-token> <project-key>
 
 

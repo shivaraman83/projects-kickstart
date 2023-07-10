@@ -13,7 +13,7 @@
 ### Exit the script on any failures
 ## define variable
 
-token=cmVmdGtuOjAxOjE3MjA1NDM3Njk6a0ZrRjFrYW5VbHQ1NXZjaDFpNmhzYWJQVE9Y
+token=<Platform admin token>
 ### Get Arguments
 SOURCE_JPD_URL="${1:?please enter JPD URL. ex - https://proservices.jfrog.io}"
 JPD_AUTH_TOKEN="${2:?please provide the identity token}"
@@ -31,6 +31,6 @@ echo $project_key is created
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$project_key/user/$PROJECT_ADMIN_UNAME/admin
 echo $PROJECT_ADMIN_UNAME is assigned as the project admin for Project with projectKey $project_key
 
-## sample usage - ./createproject.sh https://proservices.jfrog.io cmVmdGtuOjAxOjE3MjA1NDM3Njk6a0ZrRjFrYW5VbHQ1NXZjaDFpNmhzYWJQVE9Y sivas-test-project-admin
+## sample usage - ./createproject.sh https://proservices.jfrog.io <platform-admin-token> <project-admin's-user-name>
 
 
