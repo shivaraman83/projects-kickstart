@@ -13,7 +13,7 @@
 ### Exit the script on any failures
 ## define variable
 
-token=cmVmdGtuOjAxOjE3MjA1NDczMjc6T2EwYnJIdjhhNVFMNTFvdEJlaHBpUWJxQkdp
+token=
 
 ### Get Arguments
 SOURCE_JPD_URL="${1:?please enter JPD URL. ex - https://proservices.jfrog.io}"
