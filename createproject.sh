@@ -21,10 +21,13 @@ PROJECT_ADMIN_UNAME="${3:?please provide the username for the project admin . ex
 ## Delete this line later
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X DELETE -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/stp
 
-curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects -T newproject.json >> project-created.json
+
+#Create a new project
+curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects -T project-config.json >> project-created.json
 project_key=($(jq -r '.project_key' project-created.json))
 echo $project_key is created
 
+#Assign an existing user as a project admin to the newly created project above
 curl -H"Authorization: Bearer $JPD_AUTH_TOKEN" -X POST -H "Content-Type: application/json" $SOURCE_JPD_URL/access/api/v1/projects/$project_key/user/$PROJECT_ADMIN_UNAME/admin
 echo $PROJECT_ADMIN_UNAME is assigned as the project admin for Project with projectKey $project_key
 

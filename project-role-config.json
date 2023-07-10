@@ -1,0 +1,10 @@
+{
+  "actions": [
+    "READ_REPOSITORY", "ANNOTATE_REPOSITORY", "DEPLOY_CACHE_REPOSITORY", "READ_RELEASE_BUNDLE", "ANNOTATE_RELEASE_BUNDLE", "CREATE_RELEASE_BUNDLE", "READ_BUILD"
+  ],
+  "environments": [
+    "stp-UAT"
+  ],
+  "name": "stp-UAT",
+  "type": "CUSTOM"
+}
